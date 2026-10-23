@@ -1,0 +1,129 @@
+64.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO;CALLOUT,INFO;DATA_ACCESS,INFO;DB,INFO;NBA,INFO;SYSTEM,DEBUG;VALIDATION,INFO;VISUALFORCE,INFO;WAVE,INFO;WORKFLOW,INFO
+01:13:36.0 (466025)|USER_INFO|[EXTERNAL]|005000000000001|dev@example.com|(GMT+05:30) India Standard Time (Asia/Kolkata)|GMT+05:30
+01:13:36.0 (607287)|EXECUTION_STARTED
+01:13:36.0 (654898)|CODE_UNIT_STARTED|[EXTERNAL]|TRIGGERS
+01:13:36.0 (692928)|CODE_UNIT_STARTED|[EXTERNAL]|01qdL00000Cqt37|SalesGridDemoTrigger on Account trigger event BeforeUpdate|__sfdc_trigger/SalesGridDemoTrigger
+01:13:36.0 (3335198)|USER_DEBUG|[15]|DEBUG|SalesGridDemoTrigger BEFORE_UPDATE for 1 account(s)
+01:13:36.0 (4721223)|SYSTEM_MODE_ENTER|false
+01:13:36.0 (4749444)|SYSTEM_MODE_EXIT|false
+01:13:36.0 (4772004)|SYSTEM_MODE_ENTER|false
+01:13:36.0 (4927916)|USER_DEBUG|[13]|DEBUG|Before save: Sales Grid Demo Account error check
+01:13:36.0 (4939126)|SYSTEM_MODE_EXIT|false
+01:13:36.4 (4960546)|CUMULATIVE_LIMIT_USAGE
+01:13:36.4 (4960546)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 100
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 10000000
+  Number of callouts: 0 out of 100
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 50
+  Number of Mobile Apex push calls: 0 out of 10
+
+01:13:36.4 (4960546)|CUMULATIVE_LIMIT_USAGE_END
+
+01:13:36.0 (5308210)|CODE_UNIT_FINISHED|SalesGridDemoTrigger on Account trigger event BeforeUpdate|__sfdc_trigger/SalesGridDemoTrigger
+01:13:36.0 (11154475)|CODE_UNIT_STARTED|[EXTERNAL]|DuplicateDetector
+01:13:36.0 (11169975)|DUPLICATE_DETECTION_BEGIN
+01:13:36.0 (11209615)|DUPLICATE_DETECTION_RULE_INVOCATION|DuplicateRuleId:0Bm2w00000Oz3Vg|DuplicateRuleName:Standard Account Duplicate Rule|DmlType:UPDATE
+01:13:36.0 (11268126)|DUPLICATE_DETECTION_END
+01:13:36.0 (11271346)|CODE_UNIT_FINISHED|DuplicateDetector
+01:13:36.119 (119038916)|SOQL_EXECUTE_BEGIN|[84]|Aggregations:0|SELECT OwnerId FROM CronTrigger WHERE CronJobDetail.Name = :tmpVar1
+01:13:36.119 (126448668)|SOQL_EXECUTE_END|[84]|Rows:1
+01:13:36.119 (127381919)|SOQL_EXECUTE_BEGIN|[87]|Aggregations:0|SELECT Name, isActive, UserType FROM User WHERE Id = :tmpVar1
+01:13:36.119 (131935700)|SOQL_EXECUTE_END|[87]|Rows:0
+01:13:36.119 (140535607)|SOQL_EXECUTE_BEGIN|[43]|Aggregations:0|SELECT NamespacePrefix FROM Organization LIMIT 1
+01:13:36.119 (145003007)|SOQL_EXECUTE_END|[43]|Rows:1
+01:13:36.119 (147113341)|SOQL_EXECUTE_BEGIN|[567]|Aggregations:0|SELECT NamespacePrefix, Status, ExpirationDate, AllowedLicenses FROM PackageLicense WHERE (NamespacePrefix = :tmpVar1 AND (ExpirationDate = NULL OR ExpirationDate >= TODAY))
+01:13:36.119 (153340531)|SOQL_EXECUTE_END|[567]|Rows:0
+01:13:36.158 (158693211)|CUMULATIVE_LIMIT_USAGE
+01:13:36.158 (158693211)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 100
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 100 out of 10000
+  Maximum heap size: 0 out of 10000000
+  Number of callouts: 0 out of 100
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 50
+  Number of Mobile Apex push calls: 0 out of 10
+
+01:13:36.158 (158693211)|LIMIT_USAGE_FOR_NS|rh2|
+  Number of SOQL queries: 4 out of 100
+  Number of query rows: 2 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 10000000
+  Number of callouts: 0 out of 100
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 50
+  Number of Mobile Apex push calls: 0 out of 10
+
+01:13:36.158 (158693211)|CUMULATIVE_LIMIT_USAGE_END
+
+01:13:36.0 (162006269)|CODE_UNIT_STARTED|[EXTERNAL]|01qdL00000Cqt37|SalesGridDemoTrigger on Account trigger event AfterUpdate|__sfdc_trigger/SalesGridDemoTrigger
+01:13:36.0 (162447934)|USER_DEBUG|[15]|DEBUG|SalesGridDemoTrigger AFTER_UPDATE for 1 account(s)
+01:13:36.0 (162487314)|SYSTEM_MODE_ENTER|false
+01:13:36.0 (162944229)|SOQL_EXECUTE_BEGIN|[19]|Aggregations:0|SELECT COUNT() FROM Contact WHERE AccountId = :tmpVar1
+01:13:36.0 (171164712)|SOQL_EXECUTE_END|[19]|Rows:0
+01:13:36.0 (171258223)|USER_DEBUG|[20]|DEBUG|Contacts on these accounts: 0
+01:13:36.0 (172220964)|EXCEPTION_THROWN|[34]|SalesGridDemoTriggerHandler.DemoValidationException: Name must not contain "error": Sales Grid Demo Account error check
+01:13:36.0 (172236934)|EXCEPTION_THROWN|[33]|SalesGridDemoTriggerHandler.DemoValidationException: Name must not contain "error": Sales Grid Demo Account error check
+01:13:36.0 (172320445)|USER_DEBUG|[27]|ERROR|Caught for Sales Grid Demo Account error check: Name must not contain "error": Sales Grid Demo Account error check
+01:13:36.0 (172334975)|SYSTEM_MODE_EXIT|false
+01:13:36.172 (172357165)|CUMULATIVE_LIMIT_USAGE
+01:13:36.172 (172357165)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 1 out of 100
+  Number of query rows: 1 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 100 out of 10000
+  Maximum heap size: 0 out of 10000000
+  Number of callouts: 0 out of 100
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 50
+  Number of Mobile Apex push calls: 0 out of 10
+
+01:13:36.172 (172357165)|LIMIT_USAGE_FOR_NS|rh2|
+  Number of SOQL queries: 4 out of 100
+  Number of query rows: 2 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 10000000
+  Number of callouts: 0 out of 100
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 50
+  Number of Mobile Apex push calls: 0 out of 10
+
+01:13:36.172 (172357165)|CUMULATIVE_LIMIT_USAGE_END
+
+01:13:36.0 (172591228)|CODE_UNIT_FINISHED|SalesGridDemoTrigger on Account trigger event AfterUpdate|__sfdc_trigger/SalesGridDemoTrigger
+01:13:36.0 (240354507)|CODE_UNIT_STARTED|[EXTERNAL]|DuplicateDetector
+01:13:36.0 (240395228)|DUPLICATE_DETECTION_BEGIN
+01:13:36.0 (240427338)|DUPLICATE_DETECTION_RULE_INVOCATION|DuplicateRuleId:0Bm2w00000Oz3Vg|DuplicateRuleName:Standard Account Duplicate Rule|DmlType:UPDATE
+01:13:36.0 (272516959)|DUPLICATE_DETECTION_MATCH_INVOCATION_DETAILS|EntityId:001dL00002aMIYP|ActionTaken:Allow_[Report]|DuplicateRecordIds:
+01:13:36.0 (272555410)|DUPLICATE_DETECTION_MATCH_INVOCATION_SUMMARY|EntityType:Account|NumRecordsToBeSaved:1|NumRecordsToBeSavedWithDuplicates:0|NumDuplicateRecordsFound:0
+01:13:36.0 (272731252)|DUPLICATE_DETECTION_END
+01:13:36.0 (272742692)|CODE_UNIT_FINISHED|DuplicateDetector
+01:13:36.0 (275054128)|CODE_UNIT_FINISHED|TRIGGERS
+01:13:36.0 (275077498)|EXECUTION_FINISHED

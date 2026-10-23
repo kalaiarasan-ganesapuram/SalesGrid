@@ -1,0 +1,128 @@
+64.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO;CALLOUT,INFO;DATA_ACCESS,INFO;DB,INFO;NBA,INFO;SYSTEM,DEBUG;VALIDATION,INFO;VISUALFORCE,INFO;WAVE,INFO;WORKFLOW,INFO
+00:41:11.1 (1140555)|USER_INFO|[EXTERNAL]|005000000000001|dev@example.com|(GMT+05:30) India Standard Time (Asia/Kolkata)|GMT+05:30
+00:41:11.1 (1315808)|EXECUTION_STARTED
+00:41:11.1 (1380139)|CODE_UNIT_STARTED|[EXTERNAL]|01pdL00000alBJR|SalesGridDemo
+00:41:11.1 (12291657)|SYSTEM_MODE_ENTER|false
+00:41:11.1 (12473249)|SYSTEM_MODE_EXIT|false
+00:41:11.1 (12496249)|SYSTEM_MODE_ENTER|false
+00:41:11.1 (12574741)|USER_DEBUG|[12]|DEBUG|SalesGridDemo started
+00:41:11.1 (14107711)|SOQL_EXECUTE_BEGIN|[13]|Aggregations:0|SELECT Id, Name FROM Account ORDER BY CreatedDate DESC NULLS FIRST LIMIT 5
+00:41:11.1 (24890778)|SOQL_EXECUTE_END|[13]|Rows:4
+00:41:11.1 (25155261)|USER_DEBUG|[14]|DEBUG|Accounts found: 4
+00:41:11.1 (25374164)|USER_DEBUG|[20]|DEBUG|Total name length: 89
+00:41:11.1 (25717489)|SAVEPOINT_SET|[22]|SavepointValue0
+00:41:11.1 (25845911)|DML_BEGIN|[24]|Op:Insert|Type:Account|Rows:1
+00:41:11.1 (148304790)|CODE_UNIT_STARTED|[EXTERNAL]|DuplicateDetector
+00:41:11.1 (148332671)|DUPLICATE_DETECTION_BEGIN
+00:41:11.1 (152014771)|DUPLICATE_DETECTION_RULE_INVOCATION|DuplicateRuleId:0Bm2w00000Oz3Vg|DuplicateRuleName:Standard Account Duplicate Rule|DmlType:INSERT
+00:41:11.1 (211289734)|DUPLICATE_DETECTION_MATCH_INVOCATION_DETAILS|EntityType:Account|ActionTaken:Allow_[Alert,Report]|DuplicateRecordIds:
+00:41:11.1 (211317284)|DUPLICATE_DETECTION_MATCH_INVOCATION_SUMMARY|EntityType:Account|NumRecordsToBeSaved:1|NumRecordsToBeSavedWithDuplicates:0|NumDuplicateRecordsFound:0
+00:41:11.1 (211516947)|DUPLICATE_DETECTION_END
+00:41:11.1 (211529897)|CODE_UNIT_FINISHED|DuplicateDetector
+00:41:13.370 (2370108522)|SOQL_EXECUTE_BEGIN|[84]|Aggregations:0|SELECT OwnerId FROM CronTrigger WHERE CronJobDetail.Name = :tmpVar1
+00:41:13.370 (2384173611)|SOQL_EXECUTE_END|[84]|Rows:1
+00:41:13.370 (2384854880)|SOQL_EXECUTE_BEGIN|[87]|Aggregations:0|SELECT Name, isActive, UserType FROM User WHERE Id = :tmpVar1
+00:41:13.370 (2396869553)|SOQL_EXECUTE_END|[87]|Rows:0
+00:41:13.370 (2398357254)|SOQL_EXECUTE_BEGIN|[43]|Aggregations:0|SELECT NamespacePrefix FROM Organization LIMIT 1
+00:41:13.370 (2407118553)|SOQL_EXECUTE_END|[43]|Rows:1
+00:41:13.370 (2416156945)|SOQL_EXECUTE_BEGIN|[567]|Aggregations:0|SELECT NamespacePrefix, Status, ExpirationDate, AllowedLicenses FROM PackageLicense WHERE (NamespacePrefix = :tmpVar1 AND (ExpirationDate = NULL OR ExpirationDate >= TODAY))
+00:41:13.370 (2425255219)|SOQL_EXECUTE_END|[567]|Rows:0
+00:41:13.435 (2435381785)|CUMULATIVE_LIMIT_USAGE
+00:41:13.435 (2435381785)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 1 out of 200
+  Number of query rows: 4 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 2 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 1 out of 10000
+  Maximum CPU time: 110 out of 60000
+  Maximum heap size: 0 out of 25000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+00:41:13.435 (2435381785)|LIMIT_USAGE_FOR_NS|rh2|
+  Number of SOQL queries: 4 out of 200
+  Number of query rows: 2 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 25000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+00:41:13.435 (2435381785)|CUMULATIVE_LIMIT_USAGE_END
+
+00:41:13.456 (2456236798)|DML_END|[24]
+00:41:13.456 (2456616093)|DML_BEGIN|[26]|Op:Update|Type:Account|Rows:1
+00:41:13.456 (2462322131)|CODE_UNIT_STARTED|[EXTERNAL]|DuplicateDetector
+00:41:13.456 (2462339241)|DUPLICATE_DETECTION_BEGIN
+00:41:13.456 (2462377741)|DUPLICATE_DETECTION_RULE_INVOCATION|DuplicateRuleId:0Bm2w00000Oz3Vg|DuplicateRuleName:Standard Account Duplicate Rule|DmlType:UPDATE
+00:41:13.456 (2462444912)|DUPLICATE_DETECTION_END
+00:41:13.456 (2462450162)|CODE_UNIT_FINISHED|DuplicateDetector
+00:41:13.474 (2474369664)|CUMULATIVE_LIMIT_USAGE
+00:41:13.474 (2474369664)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 1 out of 200
+  Number of query rows: 4 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 3 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 2 out of 10000
+  Maximum CPU time: 120 out of 60000
+  Maximum heap size: 0 out of 25000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+00:41:13.474 (2474369664)|LIMIT_USAGE_FOR_NS|rh2|
+  Number of SOQL queries: 4 out of 200
+  Number of query rows: 2 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 25000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+00:41:13.474 (2474369664)|CUMULATIVE_LIMIT_USAGE_END
+
+00:41:13.456 (2475607831)|DML_END|[26]
+00:41:13.456 (2475870345)|SAVEPOINT_ROLLBACK|[27]|SavepointValue0
+00:41:13.456 (2477158532)|USER_DEBUG|[28]|DEBUG|Demo account rolled back
+00:41:13.456 (2477853932)|EXCEPTION_THROWN|[40]|SalesGridDemo.DemoException: Value is required, but it was blank
+00:41:13.456 (2477874202)|EXCEPTION_THROWN|[39]|SalesGridDemo.DemoException: Value is required, but it was blank
+00:41:13.456 (2477950013)|USER_DEBUG|[33]|ERROR|Caught: Value is required, but it was blank
+00:41:13.456 (2477956133)|USER_DEBUG|[35]|DEBUG|SalesGridDemo finished
+00:41:13.456 (2477964233)|SYSTEM_MODE_EXIT|false
+00:41:13.456 (2477989413)|CODE_UNIT_FINISHED|SalesGridDemo
+00:41:13.456 (2477998713)|EXECUTION_FINISHED
+00:41:13.492 (2492351018)|USER_INFO|[EXTERNAL]|005000000000001|dev@example.com|(GMT+05:30) India Standard Time (Asia/Kolkata)|GMT+05:30
+00:41:13.492 (2492385608)|EXECUTION_STARTED
+00:41:13.492 (2492424839)|CODE_UNIT_STARTED|[EXTERNAL]|DuplicateDetector
+00:41:13.492 (2492434009)|DUPLICATE_DETECTION_BEGIN
+00:41:13.492 (2492474320)|DUPLICATE_DETECTION_RULE_INVOCATION|DuplicateRuleId:0Bm2w00000Oz3Vg|DuplicateRuleName:Standard Account Duplicate Rule|DmlType:INSERT
+00:41:13.492 (2502443714)|DUPLICATE_DETECTION_END
+00:41:13.492 (2502465304)|CODE_UNIT_FINISHED|DuplicateDetector
+00:41:13.492 (2502479504)|EXECUTION_FINISHED
+00:41:13.502 (2502675267)|USER_INFO|[EXTERNAL]|005000000000001|dev@example.com|(GMT+05:30) India Standard Time (Asia/Kolkata)|GMT+05:30
+00:41:13.502 (2502685717)|EXECUTION_STARTED
+00:41:13.502 (2502699867)|CODE_UNIT_STARTED|[EXTERNAL]|DuplicateDetector
+00:41:13.502 (2502706697)|DUPLICATE_DETECTION_BEGIN
+00:41:13.502 (2502737808)|DUPLICATE_DETECTION_RULE_INVOCATION|DuplicateRuleId:0Bm2w00000Oz3Vg|DuplicateRuleName:Standard Account Duplicate Rule|DmlType:UPDATE
+00:41:13.502 (2510965000)|DUPLICATE_DETECTION_END
+00:41:13.502 (2510996840)|CODE_UNIT_FINISHED|DuplicateDetector
+00:41:13.502 (2511010700)|EXECUTION_FINISHED

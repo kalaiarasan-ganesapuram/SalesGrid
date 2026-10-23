@@ -1,0 +1,5 @@
+.vscode/**
+*.vsix
+video/**
+test/**
+CLAUDE.md

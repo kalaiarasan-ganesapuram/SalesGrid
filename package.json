@@ -1,0 +1,890 @@
+{
+  "name": "sales-grid",
+  "displayName": "Sales Grid",
+  "description": "Salesforce orgs, debug logs and your code in one place: open orgs, highlight the Apex lines a debug log ran, replay it step by step, run anonymous Apex, and check each file against the org.",
+  "version": "0.1.5",
+  "publisher": "Kalaiarasan",
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "salesforce",
+    "sfdx",
+    "org",
+    "apex",
+    "lwc",
+    "debug log",
+    "apex debugger",
+    "trace flag",
+    "anonymous apex",
+    "soql",
+    "flow",
+    "trigger",
+    "execution highlight",
+    "debug log analyzer"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "salesgrid",
+          "title": "Sales Grid",
+          "icon": "resources/activitybar.png"
+        }
+      ]
+    },
+    "views": {
+      "salesgrid": [
+        {
+          "id": "salesgrid.launcher",
+          "name": "Sales Grid"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "salesgrid.launcher",
+        "contents": "Sales Grid opens as a page in the editor area.\n[Open Sales Grid](command:salesgrid.home)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "salesgrid.home",
+        "title": "Home",
+        "category": "Sales Grid",
+        "icon": "resources/toolbar.png"
+      },
+      {
+        "command": "salesgrid.refresh",
+        "title": "Refresh Orgs",
+        "category": "Sales Grid",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "salesgrid.openOrg",
+        "title": "Open Org in Browser",
+        "category": "Sales Grid",
+        "icon": "$(link-external)"
+      },
+      {
+        "command": "salesgrid.copyOpenUrl",
+        "title": "Copy Open URL",
+        "category": "Sales Grid",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "salesgrid.copyUsername",
+        "title": "Copy Username",
+        "category": "Sales Grid"
+      },
+      {
+        "command": "salesgrid.reauthorize",
+        "title": "Log In Again",
+        "category": "Sales Grid",
+        "icon": "$(sign-in)"
+      },
+      {
+        "command": "salesgrid.removeOrg",
+        "title": "Remove Org...",
+        "category": "Sales Grid",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "salesgrid.addFavourite",
+        "title": "Pin to Top",
+        "category": "Sales Grid",
+        "icon": "$(pin)"
+      },
+      {
+        "command": "salesgrid.removeFavourite",
+        "title": "Unpin",
+        "category": "Sales Grid",
+        "icon": "$(pinned)"
+      },
+      {
+        "command": "salesgrid.setColour",
+        "title": "Set Colour Label...",
+        "category": "Sales Grid",
+        "icon": "$(symbol-color)"
+      },
+      {
+        "command": "salesgrid.openFileInOrg",
+        "title": "Open Current File in Salesforce",
+        "category": "Sales Grid",
+        "icon": "$(link-external)"
+      },
+      {
+        "command": "salesgrid.compareWithOrg",
+        "title": "Compare Current File with Org",
+        "category": "Sales Grid",
+        "icon": "$(diff)"
+      },
+      {
+        "command": "salesgrid.selectFileOrg",
+        "title": "Select Org for Current File",
+        "category": "Sales Grid",
+        "icon": "$(cloud)"
+      },
+      {
+        "command": "salesgrid.refreshFileInfo",
+        "title": "Check Current File Against Org Again",
+        "category": "Sales Grid",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "salesgrid.openUser",
+        "title": "Open User in Setup",
+        "category": "Sales Grid"
+      },
+      {
+        "command": "salesgrid.showCurrentFile",
+        "title": "Open Sales Grid",
+        "category": "Sales Grid",
+        "icon": "resources/toolbar.png"
+      },
+      {
+        "command": "salesgrid.toggleActive",
+        "title": "Activate or Deactivate Current Trigger or Flow",
+        "category": "Sales Grid",
+        "icon": "$(pass)"
+      },
+      {
+        "command": "salesgrid.configure",
+        "title": "Open Configuration",
+        "category": "Sales Grid",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "salesgrid.openDebugLogs",
+        "title": "Open Debug Logs",
+        "category": "Sales Grid",
+        "icon": "$(debug)"
+      },
+      {
+        "command": "salesgrid.debug.enable",
+        "title": "Enable Debugging",
+        "category": "Sales Grid",
+        "icon": "$(debug-start)"
+      },
+      {
+        "command": "salesgrid.debug.disable",
+        "title": "Disable Debugging",
+        "category": "Sales Grid",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "salesgrid.debugLogs.refresh",
+        "title": "Refresh Debug Logs",
+        "category": "Sales Grid",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "salesgrid.debugLogs.changeOrg",
+        "title": "Choose Org for Debug Logs",
+        "category": "Sales Grid",
+        "icon": "$(cloud)"
+      },
+      {
+        "command": "salesgrid.debugLogs.openLocal",
+        "title": "Open Debug Log File...",
+        "category": "Sales Grid",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "salesgrid.debugLogs.select",
+        "title": "Use Log for Highlighting",
+        "category": "Sales Grid",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "salesgrid.debugLogs.highlight",
+        "title": "Highlight Code This Log Ran",
+        "category": "Sales Grid",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "salesgrid.debugLogs.showSummary",
+        "title": "Show Log Summary",
+        "category": "Sales Grid",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "salesgrid.debugLogs.openRaw",
+        "title": "Open Log",
+        "category": "Sales Grid",
+        "icon": "$(file-text)"
+      },
+      {
+        "command": "salesgrid.debugLogs.clearSelection",
+        "title": "Stop Using This Log",
+        "category": "Sales Grid",
+        "icon": "$(close)"
+      },
+      {
+        "command": "salesgrid.highlightExecution",
+        "title": "Highlight Lines Run in the Debug Log",
+        "category": "Sales Grid",
+        "icon": "resources/highlight.png"
+      },
+      {
+        "command": "salesgrid.highlightAndReveal",
+        "title": "Highlight Code This Log Ran",
+        "category": "Sales Grid",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "salesgrid.clearHighlight",
+        "title": "Turn Off Debug Log Highlighting",
+        "category": "Sales Grid",
+        "icon": "$(eye-closed)"
+      },
+      {
+        "command": "salesgrid.showPerformance",
+        "title": "Show Debug Log Performance Summary",
+        "category": "Sales Grid",
+        "icon": "$(graph)"
+      },
+      {
+        "command": "salesgrid.replay.start",
+        "title": "Replay Debug Log",
+        "category": "Sales Grid",
+        "icon": "$(debug-start)"
+      },
+      {
+        "command": "salesgrid.replay.next",
+        "title": "Replay: Next Step",
+        "category": "Sales Grid",
+        "icon": "$(arrow-right)"
+      },
+      {
+        "command": "salesgrid.replay.previous",
+        "title": "Replay: Previous Step",
+        "category": "Sales Grid",
+        "icon": "$(arrow-left)"
+      },
+      {
+        "command": "salesgrid.replay.stepOut",
+        "title": "Replay: Next Method or File",
+        "category": "Sales Grid",
+        "icon": "$(debug-step-out)"
+      },
+      {
+        "command": "salesgrid.replay.nextException",
+        "title": "Replay: Next Exception",
+        "category": "Sales Grid",
+        "icon": "$(error)"
+      },
+      {
+        "command": "salesgrid.replay.previousException",
+        "title": "Replay: Previous Exception",
+        "category": "Sales Grid",
+        "icon": "$(arrow-up)"
+      },
+      {
+        "command": "salesgrid.replay.menu",
+        "title": "Replay: More Controls...",
+        "category": "Sales Grid",
+        "icon": "$(list-flat)"
+      },
+      {
+        "command": "salesgrid.replay.stop",
+        "title": "Replay: Stop",
+        "category": "Sales Grid",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "salesgrid.replay.goto",
+        "title": "Replay: Go to Step",
+        "category": "Sales Grid"
+      },
+      {
+        "command": "salesgrid.inspectLine",
+        "title": "Inspect Recorded Executions of a Line",
+        "category": "Sales Grid"
+      },
+      {
+        "command": "salesgrid.goToLocation",
+        "title": "Go to Location",
+        "category": "Sales Grid"
+      },
+      {
+        "command": "salesgrid.showLogLine",
+        "title": "Show Step in Log",
+        "category": "Sales Grid"
+      },
+      {
+        "command": "salesgrid.openLogExplorer",
+        "title": "Open Log Explorer (new window)",
+        "category": "Sales Grid",
+        "icon": "$(screen-full)"
+      },
+      {
+        "command": "salesgrid.debugLogs.openExplorer",
+        "title": "Open Log Explorer (new window)",
+        "category": "Sales Grid",
+        "icon": "$(screen-full)"
+      },
+      {
+        "command": "salesgrid.debugLogs.openWithClass",
+        "title": "Open Log with Class",
+        "category": "Sales Grid",
+        "icon": "$(split-horizontal)"
+      }
+    ],
+    "menus": {
+      "view/title": [],
+      "view/item/context": [],
+      "editor/title": [
+        {
+          "command": "salesgrid.openLogExplorer",
+          "when": "resourceScheme == file && resourceExtname == .log",
+          "group": "navigation@0"
+        },
+        {
+          "command": "salesgrid.highlightExecution",
+          "when": "salesgrid.logSelected && !salesgrid.highlightOn && resourceScheme == file && resourceExtname =~ /^\\.(cls|trigger)$/",
+          "group": "navigation@0"
+        },
+        {
+          "command": "salesgrid.clearHighlight",
+          "when": "salesgrid.highlightOn && resourceScheme == file && resourceExtname =~ /^\\.(cls|trigger)$/",
+          "group": "navigation@0"
+        },
+        {
+          "command": "salesgrid.replay.previous",
+          "when": "salesgrid.replayActive",
+          "group": "navigation@5"
+        },
+        {
+          "command": "salesgrid.replay.next",
+          "when": "salesgrid.replayActive",
+          "group": "navigation@6"
+        },
+        {
+          "command": "salesgrid.replay.nextException",
+          "when": "salesgrid.replayActive",
+          "group": "navigation@7"
+        },
+        {
+          "command": "salesgrid.replay.menu",
+          "when": "salesgrid.replayActive",
+          "group": "navigation@8"
+        },
+        {
+          "command": "salesgrid.replay.stop",
+          "when": "salesgrid.replayActive",
+          "group": "navigation@9"
+        },
+        {
+          "command": "salesgrid.openFileInOrg",
+          "when": "config.salesgrid.features.editorToolbarButtons && (resourceScheme == file && (resourceFilename =~ /\\.(cls|trigger|page|component)(-meta\\.xml)?$/ || resourceFilename =~ /\\.(flow|flexipage)-meta\\.xml$/ || resourceDirname =~ /(lwc|aura)/))",
+          "group": "navigation@1"
+        },
+        {
+          "command": "salesgrid.showCurrentFile",
+          "when": "config.salesgrid.features.editorToolbarButtons && (resourceScheme == file)",
+          "group": "navigation@2"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "salesgrid.openFileInOrg",
+          "when": "config.salesgrid.features.rightClickMenus && (resourceScheme == file && (resourceFilename =~ /\\.(cls|trigger|page|component)(-meta\\.xml)?$/ || resourceFilename =~ /\\.(flow|flexipage)-meta\\.xml$/ || resourceDirname =~ /(lwc|aura)/))",
+          "group": "salesgrid@1"
+        },
+        {
+          "command": "salesgrid.compareWithOrg",
+          "when": "config.salesgrid.features.rightClickMenus && (resourceScheme == file && (resourceFilename =~ /\\.(cls|trigger|page|component)$/ || resourceDirname =~ /lwc/))",
+          "group": "salesgrid@2"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "salesgrid.openFileInOrg",
+          "when": "config.salesgrid.features.rightClickMenus && (resourceScheme == file && (resourceFilename =~ /\\.(cls|trigger|page|component)(-meta\\.xml)?$/ || resourceFilename =~ /\\.(flow|flexipage)-meta\\.xml$/ || resourceDirname =~ /(lwc|aura)/))",
+          "group": "salesgrid@1"
+        },
+        {
+          "command": "salesgrid.compareWithOrg",
+          "when": "config.salesgrid.features.rightClickMenus && (resourceScheme == file && (resourceFilename =~ /\\.(cls|trigger|page|component)$/ || resourceDirname =~ /lwc/))",
+          "group": "salesgrid@2"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "salesgrid.refresh",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.openOrg",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.copyOpenUrl",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.copyUsername",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.reauthorize",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.removeOrg",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.addFavourite",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.removeFavourite",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.setColour",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.openFileInOrg",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.compareWithOrg",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.selectFileOrg",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.refreshFileInfo",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.openUser",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.showCurrentFile",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.toggleActive",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.configure",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.openDebugLogs",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.debugLogs.select",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.debugLogs.highlight",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.debugLogs.showSummary",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.debugLogs.openRaw",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.replay.goto",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.inspectLine",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.goToLocation",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.showLogLine",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.highlightAndReveal",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.debugLogs.changeOrg",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.highlightExecution",
+          "when": "salesgrid.logSelected"
+        },
+        {
+          "command": "salesgrid.clearHighlight",
+          "when": "salesgrid.logSelected"
+        },
+        {
+          "command": "salesgrid.showPerformance",
+          "when": "salesgrid.logSelected"
+        },
+        {
+          "command": "salesgrid.replay.start",
+          "when": "salesgrid.logSelected"
+        },
+        {
+          "command": "salesgrid.debugLogs.clearSelection",
+          "when": "salesgrid.logSelected"
+        },
+        {
+          "command": "salesgrid.replay.next",
+          "when": "salesgrid.replayActive"
+        },
+        {
+          "command": "salesgrid.replay.previous",
+          "when": "salesgrid.replayActive"
+        },
+        {
+          "command": "salesgrid.replay.stepOut",
+          "when": "salesgrid.replayActive"
+        },
+        {
+          "command": "salesgrid.replay.nextException",
+          "when": "salesgrid.replayActive"
+        },
+        {
+          "command": "salesgrid.replay.previousException",
+          "when": "salesgrid.replayActive"
+        },
+        {
+          "command": "salesgrid.replay.menu",
+          "when": "salesgrid.replayActive"
+        },
+        {
+          "command": "salesgrid.replay.stop",
+          "when": "salesgrid.replayActive"
+        },
+        {
+          "command": "salesgrid.debugLogs.openExplorer",
+          "when": "false"
+        },
+        {
+          "command": "salesgrid.debugLogs.openWithClass",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "General",
+        "order": 1,
+        "properties": {
+          "salesgrid.cliPath": {
+            "type": "string",
+            "default": "sf",
+            "description": "Command or full path used to run the Salesforce CLI.",
+            "order": 1
+          },
+          "salesgrid.expiryWarningDays": {
+            "type": "number",
+            "default": 7,
+            "minimum": 0,
+            "description": "Warn when a scratch org or trial org expires within this many days.",
+            "order": 2
+          },
+          "salesgrid.autoRefreshSeconds": {
+            "type": "number",
+            "default": 30,
+            "minimum": 0,
+            "description": "How often, in seconds, to ask the org whether the open component has changed, so a deploy shows up without a manual refresh. Each check is one API call. Set to 0 to turn it off. Takes effect after a window reload.",
+            "order": 3
+          }
+        }
+      },
+      {
+        "title": "Footer (Status Bar)",
+        "order": 2,
+        "properties": {
+          "salesgrid.showFileInfoStatusBar": {
+            "type": "boolean",
+            "default": true,
+            "order": 1,
+            "description": "Show details of the open component in the status bar at the bottom of the window. Turn this off to hide all of them; the settings below choose which ones appear."
+          },
+          "salesgrid.footer.openInSalesforce": {
+            "type": "boolean",
+            "default": true,
+            "order": 2,
+            "markdownDescription": "**Open in Salesforce**: show the link that opens the current component in the org in the status bar."
+          },
+          "salesgrid.footer.codeComparison": {
+            "type": "boolean",
+            "default": false,
+            "order": 3,
+            "markdownDescription": "**Same as / Different from org**: show whether the code in the file matches the code in the org in the status bar."
+          },
+          "salesgrid.footer.activeStatus": {
+            "type": "boolean",
+            "default": true,
+            "order": 4,
+            "markdownDescription": "**Active / Inactive**: show whether a trigger or flow is active, with the switch to change it in the status bar."
+          },
+          "salesgrid.footer.testCoverage": {
+            "type": "boolean",
+            "default": true,
+            "order": 5,
+            "markdownDescription": "**Test coverage**: show the Apex test coverage of a class or trigger in the org in the status bar."
+          },
+          "salesgrid.footer.createdBy": {
+            "type": "boolean",
+            "default": true,
+            "order": 6,
+            "markdownDescription": "**Created by**: show who created the component in the org, with date and time in the status bar."
+          },
+          "salesgrid.footer.lastModifiedBy": {
+            "type": "boolean",
+            "default": true,
+            "order": 7,
+            "markdownDescription": "**Last modified by**: show who last changed the component in the org, with date and time in the status bar."
+          }
+        }
+      },
+      {
+        "title": "Above the File",
+        "order": 3,
+        "properties": {
+          "salesgrid.showFileInfoCodeLens": {
+            "type": "boolean",
+            "default": true,
+            "order": 1,
+            "description": "Show details of the open component as links above the first line of the file. Turn this off to hide all of them; the settings below choose which ones appear."
+          },
+          "salesgrid.aboveFile.openInSalesforce": {
+            "type": "boolean",
+            "default": true,
+            "order": 2,
+            "markdownDescription": "**Open in Salesforce**: show the link that opens the current component in the org above the first line of the file."
+          },
+          "salesgrid.aboveFile.codeComparison": {
+            "type": "boolean",
+            "default": true,
+            "order": 3,
+            "markdownDescription": "**Same as / Different from org**: show whether the code in the file matches the code in the org above the first line of the file."
+          },
+          "salesgrid.aboveFile.activeStatus": {
+            "type": "boolean",
+            "default": true,
+            "order": 4,
+            "markdownDescription": "**Active / Inactive**: show whether a trigger or flow is active, with the switch to change it above the first line of the file."
+          },
+          "salesgrid.aboveFile.testCoverage": {
+            "type": "boolean",
+            "default": true,
+            "order": 5,
+            "markdownDescription": "**Test coverage**: show the Apex test coverage of a class or trigger in the org above the first line of the file."
+          },
+          "salesgrid.aboveFile.createdBy": {
+            "type": "boolean",
+            "default": true,
+            "order": 6,
+            "markdownDescription": "**Created by**: show who created the component in the org, with date and time above the first line of the file."
+          },
+          "salesgrid.aboveFile.lastModifiedBy": {
+            "type": "boolean",
+            "default": true,
+            "order": 7,
+            "markdownDescription": "**Last modified by**: show who last changed the component in the org, with date and time above the first line of the file."
+          }
+        }
+      },
+      {
+        "title": "Current File Panel",
+        "order": 4,
+        "properties": {}
+      },
+      {
+        "title": "Features",
+        "order": 5,
+        "properties": {
+          "salesgrid.features.activateDeactivate": {
+            "type": "boolean",
+            "default": true,
+            "order": 1,
+            "description": "Let a trigger or flow be switched on or off by clicking its Active / Inactive status. When off, the status is still shown but cannot be clicked."
+          },
+          "salesgrid.features.mismatchWarning": {
+            "type": "boolean",
+            "default": true,
+            "order": 2,
+            "description": "Show a warning when a file you open is different from the org."
+          },
+          "salesgrid.features.editorToolbarButtons": {
+            "type": "boolean",
+            "default": true,
+            "order": 3,
+            "description": "Show the Open in Salesforce and Sales Grid buttons at the top right of the editor."
+          },
+          "salesgrid.features.rightClickMenus": {
+            "type": "boolean",
+            "default": true,
+            "order": 4,
+            "description": "Show Open in Salesforce and Compare with Org on the editor and Explorer right-click menus."
+          }
+        }
+      },
+      {
+        "title": "Debug Log Highlighting",
+        "order": 6,
+        "properties": {
+          "salesgrid.executionHighlight.showCounts": {
+            "type": "boolean",
+            "default": true,
+            "order": 1,
+            "description": "Show how many times a highlighted line ran (×12) at the end of the line."
+          },
+          "salesgrid.executionHighlight.showDebugOutput": {
+            "type": "boolean",
+            "default": true,
+            "order": 1,
+            "description": "Show each highlighted line's System.debug output at the end of the line."
+          },
+          "salesgrid.executionHighlight.inferLines": {
+            "type": "boolean",
+            "default": true,
+            "order": 1,
+            "description": "For logs below Apex Code FINER, mark with a dotted edge the plain lines between two recorded lines that almost certainly ran. These are inferred, not in the log."
+          },
+          "salesgrid.executionHighlight.hotLineThreshold": {
+            "type": "number",
+            "default": 50,
+            "minimum": 2,
+            "order": 2,
+            "description": "A line that ran this many times or more is shown in yellow as a possible performance issue. Queries and DML that ran more than once from one line are always yellow."
+          },
+          "salesgrid.debugLogs.openInNewWindow": {
+            "type": "boolean",
+            "default": true,
+            "order": 0,
+            "description": "Open log, Open log with class and the Log Explorer open in a new maximized window; the taskbar stays visible. Close it with the window's own close button."
+          },
+          "salesgrid.executionHighlight.highlightOnLogOpen": {
+            "type": "boolean",
+            "default": true,
+            "order": 3,
+            "description": "When an Apex debug log (.log) is opened in the editor, highlight the lines it ran and open the class or trigger it ran beside it."
+          }
+        }
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "salesgrid.replay.next",
+        "key": "alt+]",
+        "when": "salesgrid.replayActive && editorTextFocus"
+      },
+      {
+        "command": "salesgrid.replay.previous",
+        "key": "alt+[",
+        "when": "salesgrid.replayActive && editorTextFocus"
+      }
+    ],
+    "colors": [
+      {
+        "id": "salesgrid.executedLineBackground",
+        "description": "Background of Apex lines a debug log shows ran.",
+        "defaults": {
+          "dark": "#2ea0431f",
+          "light": "#2ea04314",
+          "highContrast": null,
+          "highContrastLight": null
+        }
+      },
+      {
+        "id": "salesgrid.executedLineMarker",
+        "description": "Left edge and scroll-bar mark of Apex lines a debug log shows ran.",
+        "defaults": {
+          "dark": "#3fb950",
+          "light": "#2da44e",
+          "highContrast": "#3fb950",
+          "highContrastLight": "#3fb950"
+        }
+      },
+      {
+        "id": "salesgrid.exceptionLineBackground",
+        "description": "Background of Apex lines where a debug log recorded an exception.",
+        "defaults": {
+          "dark": "#f8514933",
+          "light": "#cf222e1f",
+          "highContrast": null,
+          "highContrastLight": null
+        }
+      },
+      {
+        "id": "salesgrid.exceptionLineMarker",
+        "description": "Left edge and scroll-bar mark of Apex lines with an exception.",
+        "defaults": {
+          "dark": "#f85149",
+          "light": "#cf222e",
+          "highContrast": "#f85149",
+          "highContrastLight": "#f85149"
+        }
+      },
+      {
+        "id": "salesgrid.hotLineBackground",
+        "description": "Background of Apex lines a debug log shows ran unusually often.",
+        "defaults": {
+          "dark": "#d2992229",
+          "light": "#d4a72c26",
+          "highContrast": null,
+          "highContrastLight": null
+        }
+      },
+      {
+        "id": "salesgrid.hotLineMarker",
+        "description": "Left edge and scroll-bar mark of Apex lines that ran unusually often.",
+        "defaults": {
+          "dark": "#d29922",
+          "light": "#bf8700",
+          "highContrast": "#d29922",
+          "highContrastLight": "#d29922"
+        }
+      },
+      {
+        "id": "salesgrid.replayLineBackground",
+        "description": "Background of the line at the current replay step.",
+        "defaults": {
+          "dark": "#1f7bff40",
+          "light": "#1f7bff26",
+          "highContrast": null,
+          "highContrastLight": null
+        }
+      },
+      {
+        "id": "salesgrid.inferredLineBackground",
+        "description": "Background of Apex lines that most likely ran but are not in the debug log (inferred).",
+        "defaults": {
+          "dark": "#2ea0430d",
+          "light": "#2ea0430a",
+          "highContrast": null,
+          "highContrastLight": null
+        }
+      }
+    ]
+  }
+}
